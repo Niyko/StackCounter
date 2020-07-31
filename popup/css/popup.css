@@ -152,6 +152,58 @@ canvas {
     top: -2px;
 }
 
+.update-container{
+    width: auto;
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 8px;
+    margin-top: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.update-container div{
+    display: inline-block;
+}
+
+.update-container h2{
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0px;
+    color: #9b9a9a;
+}
+
+.update-container p{
+    margin: 0px;
+    margin-top: 0px;
+    font-size: 11px;
+    font-weight: 300;
+    color: #9b9a9a;
+    margin-top: 3px;
+}
+
+.update-container button{
+    background: #ef692d;
+    padding: 7px 11px;
+    border-radius: 7px;
+    border: none;
+    text-transform: uppercase;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    position: relative;
+    top: -16px;
+    border: 2px solid #ef692d;
+    cursor: pointer;
+    transition-duration: 0.3s;
+}
+
+.update-container button:hover{
+    border: 2px solid #ef692d;
+    background: #ffffff;
+    color: #ef692d;
+}
+
 .footer {
     text-align: center;
 }
@@ -160,5 +212,6 @@ canvas {
     width: 85px;
     text-align: center;
     opacity: 0.4;
+    cursor: pointer;
     margin-bottom: 5px;
 }

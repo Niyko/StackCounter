@@ -2,10 +2,11 @@ var totalCountElement = document.querySelector('#total-count');
 var todayCountElement = document.querySelector('#today-count');
 var monthCountElement = document.querySelector('#month-count');
 var canvasBottom = document.querySelector('.canvas-bottom');
+var footerLogo = document.querySelector('#footer-logo');
 //var btn = document.querySelector('#abble');
 
 document.addEventListener('contextmenu', event => event.preventDefault());
-//btn.addEventListener("click", test); 
+footerLogo.addEventListener("click", openGithubPage); 
 
 renderUI();
 
@@ -40,18 +41,18 @@ async function renderGraph(){
                 backgroundColor: "rgba(240, 114, 41, 0.2)",
                 borderColor: "rgba(240, 114, 41, 1)",
                 data: [
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                    randomScalingFactor()
+                    await getFromStorage("month_january_count", 0),
+                    await getFromStorage("month_february_count", 0),
+                    await getFromStorage("month_march_count", 0),
+                    await getFromStorage("month_april_count", 0),
+                    await getFromStorage("month_may_count", 0),
+                    await getFromStorage("month_june_count", 0),
+                    await getFromStorage("month_july_count", 0),
+                    await getFromStorage("month_august_count", 0),
+                    await getFromStorage("month_september_count", 0),
+                    await getFromStorage("month_october_count", 0),
+                    await getFromStorage("month_november_count", 0),
+                    await getFromStorage("month_december_count", 0)
                 ],
                 fill: true,
             }]
@@ -110,4 +111,11 @@ async function renderGraph(){
     var ctx = document.getElementById('canvas').getContext('2d');
     ctx.height = 90;
     window.myLine = new Chart(ctx, config);
+}
+
+//Open Github page
+function openGithubPage(){
+    browser.tabs.create({
+        "url": "https://github.com/Niyko/StackCounter"
+    });
 }
