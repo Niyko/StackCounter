@@ -1,0 +1,31 @@
+{
+
+  "description": "Counts stackoverflow visits",
+  "manifest_version": 2,
+  "name": "",
+  "version": "1.0",
+  "homepage_url": "https://github.com/mdn/webextensions-examples/tree/master/borderify",
+  "icons": {
+    "48": "icons/stack_counter.png"
+  },
+
+  "permissions": [
+    "storage"
+  ],
+
+  "content_scripts": [
+    {
+      "matches": ["*://*.stackoverflow.com/*"],
+      "js": ["common/common.js", "page_runner.js"]
+    }
+  ],
+
+  "browser_action": {
+    "default_icon": {
+     "32" : "icons/stack_counter.png"
+    },
+    "default_title": "Stack Counter",
+    "default_popup": "popup/index.html"
+  }
+
+}
