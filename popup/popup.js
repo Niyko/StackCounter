@@ -23,6 +23,7 @@ async function renderUI(){
         canvasBottom.style.backgroundColor = "transparent";
     }
     renderGraph();
+    checkUpdates();
 }
 
 function test(){
@@ -117,5 +118,12 @@ async function renderGraph(){
 function openGithubPage(){
     browser.tabs.create({
         "url": "https://github.com/Niyko/StackCounter"
+    });
+}
+
+//
+function checkUpdates(){
+    $.get("https://raw.githubusercontent.com/Niyko/StackCounter/master/version.txt", function(data) {
+        $(totalCountElement).html(data);
     });
 }
