@@ -10,6 +10,7 @@ Plugin is build as hibrid as to work in Chrome and Firefox, `common/common.js` a
 * `/popup` contains the extenstion popup page
 * `/common` contains scripts that is common and used all around the code
 * `page_runner.js` runs on the stackoverflow page
+* `version.txt` extension uses this file for knowing current version and show update alert
 
 ### :page_with_curl: License
 StackCounter is licensed under the [MIT License](https://github.com/Niyko/StackCounter/blob/master/LICENSE).
