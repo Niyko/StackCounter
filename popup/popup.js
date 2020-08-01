@@ -1,12 +1,17 @@
+let extension = (isChrome())?chrome:browser;
+
 var totalCountElement = document.querySelector('#total-count');
 var todayCountElement = document.querySelector('#today-count');
 var monthCountElement = document.querySelector('#month-count');
 var canvasBottom = document.querySelector('.canvas-bottom');
 var footerLogo = document.querySelector('#footer-logo');
+var updateContainer = document.querySelector('.update-container');
+var updateLink = document.querySelector('.update-link');
 //var btn = document.querySelector('#abble');
 
 document.addEventListener('contextmenu', event => event.preventDefault());
-footerLogo.addEventListener("click", openGithubPage); 
+footerLogo.addEventListener("click", openGithubPage);
+updateLink.addEventListener("click", openUpdateLink);
 
 renderUI();
 
@@ -26,9 +31,10 @@ async function renderUI(){
     checkUpdates();
 }
 
-function test(){
+async function test(key, defValue) {
 
 }
+
 
 
 //Render the monthly graph
@@ -116,7 +122,7 @@ async function renderGraph(){
 
 //Open Github page
 function openGithubPage(){
-    browser.tabs.create({
+    extension.tabs.create({
         "url": "https://github.com/Niyko/StackCounter"
     });
 }
@@ -124,6 +130,18 @@ function openGithubPage(){
 //
 function checkUpdates(){
     $.get("https://raw.githubusercontent.com/Niyko/StackCounter/master/version.txt", function(data) {
-        $(totalCountElement).html(data);
+        if(data.indexOf("production_relase=")>-1){
+            if(data.replace("production_relase=", "")!=extension.runtime.getManifest().version){
+                $(updateContainer).show();
+                $(updateContainer).addClass("animate__animated animate__fadeInUp");
+            }
+        }
+    });
+}
+
+//Open Addon Page for updating
+function openUpdateLink(){
+    extension.tabs.create({
+        "url": "https://addons.mozilla.org/en-US/firefox/"
     });
 }

@@ -1,24 +1,55 @@
 //Get from local storage / Also stores defValue when not found
 async function getFromStorage(key, defValue){
-    let getData = await browser.storage.local.get(key).then((item) => {
-        if(Object.keys(item).length === 0){
-            let obj = {};
-            obj[key] = defValue;
-            browser.storage.local.set(obj);
-            return defValue;
-        }
-        else {
-            return item[key];
-        }
-    }, onError);
-    return getData;
+    if(isChrome()){
+        return new Promise((resolve, reject) => {
+            try {
+                chrome.storage.sync.get(key, function (item) {
+                    if(Object.keys(item).length === 0){
+                        let obj = {};
+                        obj[key] = defValue;
+                        chrome.storage.sync.set(obj);
+                        resolve(defValue);
+                    }
+                    else {
+                        resolve(item[key]);
+                    }
+                })
+            }
+            catch (ex) {
+                reject(ex);
+            }
+        });
+    }
+    else {
+        let getData = await browser.storage.local.get(key).then((item) => {
+            if(Object.keys(item).length === 0){
+                let obj = {};
+                obj[key] = defValue;
+                browser.storage.local.set(obj);
+                return defValue;
+            }
+            else {
+                return item[key];
+            }
+        }, onError);
+        return getData;
+    }
 }
 
 //Store to local storage
 function setToStorage(key, value){
     let obj = {};
     obj[key] = value;
-    browser.storage.local.set(obj);
+    if(isChrome()) chrome.storage.sync.set(obj);
+    else browser.storage.local.set(obj);
+}
+
+function isChrome() {
+    if (typeof chrome !== "undefined" && typeof browser === "undefined") {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 //Get date stamp for saving today counts in today_date
