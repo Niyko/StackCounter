@@ -1,2 +1,2 @@
 ![StackCounter logo](https://i.imgur.com/10dIHGk.png)
-Count how much you visit stackoverflow
+We developers always use Stackoverflow, Ever thought of counting how much you use stackoverflow and see how much you depend on it? With StackCounter count how much you stackoverflow in daily and monthly and over all wise. Also has a monthly graph that shows the count in month wise, So you can see your which month you screamed for help
