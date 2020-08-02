@@ -14,3 +14,8 @@ Plugin is build as hibrid as to work in Chrome and Firefox, `common/common.js` a
 
 ### :page_with_curl: License
 StackCounter is licensed under the [MIT License](https://github.com/Niyko/StackCounter/blob/master/LICENSE).
+
+---
+
+<!-- pls don't use this in your repo -->
+![visitors count](https://server.niyko.com/github-visitors-count?id=stackcounter)
