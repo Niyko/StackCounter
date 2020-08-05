@@ -18,6 +18,10 @@ renderUI();
 
 //Render values to the UI elements
 async function renderUI(){
+    var ua = navigator.userAgent.toLowerCase();
+    var isAndroid = ua.indexOf("android") > -1;
+    if(isAndroid) document.body.style.width = "100%";
+
     let currentTotalCount = await getFromStorage("total_count", 0);
     let currentTodayCount = await getFromStorage("today_count", 0);
     let currentMonthCount = await getFromStorage(`month_${getMonthName()}_count`, 0);
@@ -142,6 +146,6 @@ function checkUpdates(){
 //Open Addon Page for updating
 function openUpdateLink(){
     extension.tabs.create({
-        "url": "https://addons.mozilla.org/en-US/firefox/"
+        "url": "https://addons.mozilla.org/en-US/firefox/addon/stack-counter/?src=search"
     });
 }
